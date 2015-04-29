@@ -15,6 +15,10 @@ var tasks = {
   'buy': buy
 }
 
+app.get('/', function(req, res){
+  res.end("hello");
+});
+
 app.post('/api', function(req, res){
   var words = req.body.text.split(' ');
   var trigger = words.shift();
