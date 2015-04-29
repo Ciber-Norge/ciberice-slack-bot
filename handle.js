@@ -13,7 +13,7 @@ module.exports = co.wrap(function*(body){
   var param = words.pop();
   var keyword = words.length ? words.join(' ') : param;
   if(keyword in tasks){
-    return tasks[keyword](body.user_id, param);
+    return tasks[keyword](body.user_id, param, body.user_name);
   }else{
     return 'whut?\nprøv `isbot hjelp`, n00b';
   }
