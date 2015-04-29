@@ -9,18 +9,30 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var slack = new Slack(process.env['SLACK_HOST'], process.env['SLACK_TOKEN']);
 
+var tasks = {
+  'status': getStatus
+}
+
 app.post('/api', function(req, res){
-  getStatus(function(err, result) {
-    res.json(slack.respond(req.body, function(hook) {
-      return {
-        username: 'isbot',
-        text: result
-      };
-    }));
-  });
+  var words = req.body.text.split(' ');
+  var trigger = words.shift();
+  var keyword = words.shift();
+  
+  if(keyword in tasks){
+    tasks[keyword](words, function(err, result) {
+      res.json(slack.respond(req.body, function(hook) {
+        return {
+          username: 'isbot',
+          text: result
+        };
+      }));
+    });
+  }else{
+    console.log("unknown keyword");
+  }
 });
 
-function getStatus(callback){
+function getStatus(_, callback){
   request(process.env['ICE_API'], function(err, response, body){
     var result = JSON.parse(body);
     
@@ -39,3 +51,4 @@ function getStatus(callback){
 };
 
 app.listen(8080);
+console.log("listening on port 8080");
