@@ -13,6 +13,17 @@ module.exports = co.wrap(function *(name){
   }else if(found.length == 0){
     throw "Hæ? Den isen har jeg aldri hørt om!";
   }else{
-    throw "Fant "+found.length+" is, hvilken mente du?\n"+found.map(function(e){ return e.Title; }).join('\n');
+    const exactMatch = find(found, name);
+    if(exactMatch){
+      return exactMatch;
+    }else{
+      throw "Fant "+found.length+" is, hvilken mente du?\n"+found.map(function(e){ return e.Title; }).join('\n');
+    }
   }
 });
+
+function find(list, name){
+  return list.filter(function(entry){
+    return entry.Title === name;
+  })[0];
+}
