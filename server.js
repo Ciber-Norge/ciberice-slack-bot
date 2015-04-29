@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 var slack = new Slack(process.env['SLACK_HOST'], process.env['SLACK_TOKEN']);
 
 var tasks = {
-  'status': getStatus
+  'status': getStatus,
+  'associate': associateUser,
+  'buy': buy
 }
 
 app.post('/api', function(req, res){
@@ -29,11 +31,17 @@ app.post('/api', function(req, res){
     });
   }else{
     console.log("unknown keyword");
+    res.json(slack.respond(req.body, function(hook) {
+        return {
+          username: 'isbot',
+          text: 'whut?'
+        };
+      }));
   }
 });
 
 function getStatus(_, callback){
-  request(process.env['ICE_API'], function(err, response, body){
+  request(process.env['ICE_API']+'/api/IceCream', function(err, response, body){
     var result = JSON.parse(body);
     
     var list = result.filter(function(entry){
@@ -48,7 +56,32 @@ function getStatus(_, callback){
     
     callback(null, "```"+table+"```");
   });
-};
+}
+
+function associateUser(params, callback){
+  callback(null, "not implemented");
+}
+
+function buy(params, callback){
+  console.log("buying", params);
+  request.post({
+    url: process.env['ICE_API']+'/api/buy', 
+    form: {
+      iceCreamId: params[0],
+      buyer: params[1]
+    }
+  }, function(err, response, body){
+    if(err) return callback(err);
+    
+    var result = JSON.parse(body);
+    console.log("bought", result);
+    if(result.success){
+      callback(null, "Kos deg med isen");
+    }else{
+      callback(null, result.errorMessage);
+    }
+  });
+}
 
 app.listen(8080);
 console.log("listening on port 8080");
