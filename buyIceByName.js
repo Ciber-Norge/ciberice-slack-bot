@@ -13,7 +13,10 @@ module.exports = co.wrap(function*(user, name){
     const result = yield buy(found.Id, user);
     
     const comment = result.quantity ? "nå er det bare "+result.quantity+" igjen!" : "du tok den siste isen!";
-    return "Kos deg med "+found.Title+" ("+comment+")";
+    const badgesComment = result.newBadges && result.newBadges.length ? 
+                            "\nGratulerer med badge!\n" + result.newBadges.join("\n") :
+                            "";
+    return "Kos deg med "+found.Title+" ("+comment+")" + badgesComment;
   }catch(error){
     return error;
   }
