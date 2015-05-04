@@ -2,11 +2,11 @@ const co = require('co');
 const api = require('./api');
 const textTable = require('text-table');
 
-module.exports = co.wrap(function* getStatus(){
+module.exports = co.wrap(function* getStatus(user, parameter){
   const result = yield api.list();
   
   const list = result.filter(function(entry){
-    return entry.Quantity > 0;
+    return parameter || entry.Quantity > 0;
   }).sort(function(a, b){
     return a.Title.localeCompare(b.Title);
   }).map(function(entry){
