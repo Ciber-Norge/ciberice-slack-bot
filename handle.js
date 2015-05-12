@@ -13,7 +13,9 @@ module.exports = co.wrap(function*(body){
   const sentence = words.join(' ');
   const keyword = findTask(sentence);
   const param = sentence.substr(keyword.length).trim();
-    
+
+  console.log('task', sentence, ':', keyword, '-', param);
+
   if(keyword){
     return tasks[keyword](body.user_id, param, body.user_name);
   }else{
