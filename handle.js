@@ -12,7 +12,7 @@ module.exports = co.wrap(function*(body){
   const trigger = words.shift();
   const sentence = words.join(' ');
   const keyword = findTask(sentence);
-  const param = sentence.substr(keyword.length).trim();
+  const param = sentence.substr((keyword || '').length).trim();
 
   console.log('task', sentence, ':', keyword, '-', param);
 
