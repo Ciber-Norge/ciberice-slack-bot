@@ -14,7 +14,7 @@ module.exports = co.wrap(function*(body){
   const keyword = findTask(sentence);
   const param = sentence.substr(keyword.length).trim();
     
-  if(keyword in tasks){
+  if(keyword){
     return tasks[keyword](body.user_id, param, body.user_name);
   }else{
     return 'whut?\nprøv `isbot hjelp`, n00b';
