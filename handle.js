@@ -11,7 +11,7 @@ module.exports = co.wrap(function*(body){
   const words = body.text.split(' ');
   const trigger = words.shift();
   const sentence = words.join(' ');
-  const keyword = findTask(sentence);
+  const keyword = findTask(sentence.toLowerCase());
   const param = sentence.substr((keyword || '').length).trim();
 
   console.log('task', sentence, ':', keyword, '-', param);
