@@ -15,6 +15,9 @@ app.get('/', function(req, res){
 app.post('/api', function(req, res){  
   handle(req.body).then(function(result) {
     res.json(respond(req.body, result));
+  }).catch(function(error){
+    console.error(error.stack || error);
+    res.end();
   });
 });
 
