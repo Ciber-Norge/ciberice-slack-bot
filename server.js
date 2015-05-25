@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 var slack = new Slack(process.env['SLACK_HOST'], process.env['SLACK_TOKEN']);
 
 app.get('/', function(req, res){
-  res.end("ciberice-slack-bot");
+  res.end("ciberice-slack-bot success");
 });
 
 app.post('/api', function(req, res){  
