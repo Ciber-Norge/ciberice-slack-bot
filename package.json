@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "iojs --harmony_arrow_functions server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
