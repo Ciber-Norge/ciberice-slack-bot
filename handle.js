@@ -4,7 +4,8 @@ const tasks = {
   'status': require('./getStatus'),
   'jeg er': require('./registerUser'),
   'kjøp': require('./buyIceByName'),
-  'hjelp': require('./help')
+  'hjelp': require('./help'), 
+  'start sandwich produksjon': ()  => 'http://big.assets.huffingtonpost.com/IceCreamSandwichesMade.gif'
 };
 
 module.exports = co.wrap(function*(body){
