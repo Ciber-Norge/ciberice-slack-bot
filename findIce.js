@@ -23,7 +23,19 @@ module.exports = co.wrap(function *(name){
 });
 
 function find(list, name){
-  return list.filter(function(entry){
+  const foundExact = list.filter(function(entry){
     return entry.Title === name;
   })[0];
+  if(foundExact){
+    return foundExact;
+  }
+  
+  const foundInFreezer = list.filter(function(entry){
+    return entry.Quantity > 0;
+  });
+  if(foundInFreezer.length == 1){
+    return foundInFreezer[0];
+  }
+  
+  return null;
 }
