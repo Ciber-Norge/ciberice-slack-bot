@@ -17,7 +17,7 @@ module.exports = co.wrap(function *(name){
     if(exactMatch){
       return exactMatch;
     }else{
-      const foundInFreezer = list.filter(function(entry){
+      const foundInFreezer = found.filter(function(entry){
         return entry.Quantity > 0;
       });
       throw "Fant "+foundInFreezer.length+" is, hvilken mente du?\n"+foundInFreezer.map(function(e){ return e.Title; }).join('\n');
