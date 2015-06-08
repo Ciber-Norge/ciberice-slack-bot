@@ -5,7 +5,7 @@ module.exports = co.wrap(function *(name){
   const result = yield api.list();
   
   const found = result.filter(function(entry){
-    return entry.Title.toLowerCase().indexOf(name.toLowerCase()) >= 0;
+    return new RegExp(name, 'i').test(entry.Title);
   });
   
   if(found.length == 1){
