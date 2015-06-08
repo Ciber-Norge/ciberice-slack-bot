@@ -17,7 +17,10 @@ module.exports = co.wrap(function *(name){
     if(exactMatch){
       return exactMatch;
     }else{
-      throw "Fant "+found.length+" is, hvilken mente du?\n"+found.map(function(e){ return e.Title; }).join('\n');
+      const foundInFreezer = list.filter(function(entry){
+        return entry.Quantity > 0;
+      });
+      throw "Fant "+foundInFreezer.length+" is, hvilken mente du?\n"+foundInFreezer.map(function(e){ return e.Title; }).join('\n');
     }
   }
 });
