@@ -6,7 +6,8 @@ const tasks = {
   'kjøp': require('./buyIceByName'),
   'hjelp': require('./help'), 
   'vi trenger mer sandwich is': ()  => 'http://big.assets.huffingtonpost.com/IceCreamSandwichesMade.gif',
-  'hva liker jeg': require('./whatDoILike')
+  'hva liker jeg': require('./whatDoILike'),
+  'badges': require('./badges')
 };
 
 module.exports = co.wrap(function*(body){

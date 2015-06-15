@@ -21,5 +21,8 @@ module.exports = {
   }),
   favorites: co.wrap(function*(slackId){
     return JSON.parse(yield request(process.env['ICE_API']+'/api/favourites?slackId='+slackId));
+  }),
+  badges: co.wrap(function*(){
+    return JSON.parse(yield request(process.env['ICE_API']+'/api/badges'));
   })
 };
