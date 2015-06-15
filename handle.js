@@ -4,10 +4,11 @@ const tasks = {
   'status': require('./getStatus'),
   'jeg er': require('./registerUser'),
   'kjøp': require('./buyIceByName'),
-  'hjelp': require('./help'), 
+  'hjelp': require('./help'),
   'vi trenger mer sandwich is': ()  => 'http://big.assets.huffingtonpost.com/IceCreamSandwichesMade.gif',
   'hva liker jeg': require('./whatDoILike'),
-  'badges': require('./badges')
+  'badges': require('./badges'),
+  'mine badges': require('./myBadges')
 };
 
 module.exports = co.wrap(function*(body){
@@ -28,7 +29,7 @@ module.exports = co.wrap(function*(body){
 
 function findTask(sentence){
   const keywords = Object.keys(tasks);
-  
+
   return keywords.filter(function(keyword){
     return sentence.indexOf(keyword) === 0;
   })[0];

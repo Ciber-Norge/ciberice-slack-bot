@@ -7,7 +7,7 @@ module.exports = {
   }),
   buy: co.wrap(function*(id, slackId){
     return JSON.parse(yield request.post({
-      url: process.env['ICE_API']+'/api/buy', 
+      url: process.env['ICE_API']+'/api/buy',
       form: {
         iceCreamId: id,
         slackId: slackId
@@ -24,5 +24,8 @@ module.exports = {
   }),
   badges: co.wrap(function*(){
     return JSON.parse(yield request(process.env['ICE_API']+'/api/badges'));
+  }),
+  myBadges: co.wrap(function*(slackId){
+    return JSON.parse(yield request(process.env['ICE_API']+'/api/badge?slackId='+slackId))
   })
 };
