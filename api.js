@@ -18,5 +18,10 @@ module.exports = {
     return JSON.parse(yield request.post({
       url: process.env['ICE_API']+'/api/registerSlackUser?slackId='+slackId+'&employeeId='+id
     }));
+  }),
+  favorites: co.wrap(function*(slackId){
+    return JSON.parse(yield request.post({
+      url: process.env['ICE_API']+'/api/favourites?slackId='+slackId
+    }));
   })
 };
