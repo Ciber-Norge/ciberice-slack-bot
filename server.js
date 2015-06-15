@@ -17,7 +17,7 @@ app.post('/api', function(req, res){
     res.json(respond(req.body, result));
   }).catch(function(error){
     console.error(error.stack || error);
-    res.end();
+    res.json(respond(req.body, 'Noe har gått veldig galt!\nhttp://i.imgur.com/5Gj2YdJ.gif'))
   });
 });
 
