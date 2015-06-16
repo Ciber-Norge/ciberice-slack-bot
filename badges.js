@@ -2,13 +2,8 @@ const co = require('co');
 const api = require('./api');
 
 module.exports = co.wrap(function* getStatus(user, parameter){
-  try {
-    const result = yield api.badges();
-    var badgesMessage = ['Tilgjengelige badges'].concat(result.map(function(badge){
-      return '`' + badge + '`';
-    })).join('\n');
-    return badgesMessage;
-  } catch (e){
-    console.error(e);
-  }
+  const result = yield api.badges();
+  return ['Tilgjengelige badges']
+  .concat(result.map(badge => '`' + badge + '`'))
+  .join('\n');
 });
