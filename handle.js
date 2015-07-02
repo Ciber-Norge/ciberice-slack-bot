@@ -8,7 +8,8 @@ const tasks = {
   'vi trenger mer sandwich is': ()  => 'http://big.assets.huffingtonpost.com/IceCreamSandwichesMade.gif',
   'hva liker jeg': require('./whatDoILike'),
   'badges': require('./badges'),
-  'mine badges': require('./myBadges')
+  'mine badges': require('./myBadges'),
+  'hvordan har du det?': () => 'Jeg er veldig glad! :grinning:'
 };
 
 module.exports = co.wrap(function*(body){
