@@ -9,7 +9,7 @@ const tasks = {
   'hva liker jeg': require('./whatDoILike'),
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
-  'hvordan har du det?': () => 'Jeg er veldig glad! :grinning:'
+  'hvordan har du det?': () => 'Jeg saver gusevik! :broken_heart:'
 };
 
 module.exports = co.wrap(function*(body){
