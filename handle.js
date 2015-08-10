@@ -1,5 +1,7 @@
 const co = require('co');
 
+let mood = 'Jeg er glad i is';
+
 const tasks = {
   'status': require('./getStatus'),
   'jeg er': require('./registerUser'),
@@ -9,7 +11,7 @@ const tasks = {
   'hva liker jeg': require('./whatDoILike'),
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
-  'hvordan har du det?': () => 'Jeg saver gusevik! :broken_heart:'
+  'hvordan har du det?': () => mood
 };
 
 module.exports = co.wrap(function*(body){
@@ -27,6 +29,10 @@ module.exports = co.wrap(function*(body){
     return 'whut?\nprøv `isbot hjelp`, n00b';
   }
 });
+
+module.exports.mood = function(newMood){
+  mood = newMood;
+};
 
 function findTask(sentence){
   const keywords = Object.keys(tasks);
