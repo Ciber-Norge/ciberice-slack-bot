@@ -1,3 +1,5 @@
+'use strict';
+
 const co = require('co');
 
 let mood = 'Jeg er glad i is';
