@@ -12,6 +12,12 @@ app.get('/', function(req, res){
   res.end("ciberice-slack-bot success");
 });
 
+
+app.get('/mood', function(req, res){
+  handle.mood(req.params.mood);
+  res.end("OK!");
+});
+
 app.post('/api', function(req, res){  
   handle(req.body).then(function(result) {
     res.json(respond(req.body, result));
