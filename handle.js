@@ -11,7 +11,8 @@ const tasks = {
   'hva liker jeg': require('./whatDoILike'),
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
-  'hvordan har du det?': () => module.exports.mood
+  'hvordan har du det?': () => module.exports.mood, 
+  'det er tomt': () => 'Gusevik, du må kjøpe mer is' 
 };
 
 module.exports = co.wrap(function*(body){
