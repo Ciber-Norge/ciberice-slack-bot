@@ -29,6 +29,23 @@ app.get('/mood', function(req, res){
   `);
 });
 
+app.post('/boss', function(req, res){
+  handle.boss = req.body.boss;
+  console.log('set boss to', req.body.boss);
+  res.redirect('/boss');
+});
+
+app.get('/boss', function(req, res){
+  res.header("Content-Type", "text/html; charset=utf-8");
+  res.end(`
+<!doctype html>
+<form method="POST" action="/boss">
+  <input name="boss" value="${handle.boss}">
+  <button type="submit">OK</button>
+</form>
+  `);
+});
+
 app.post('/api', function(req, res){  
   handle(req.body).then(function(result) {
     res.json(respond(req.body, result));
