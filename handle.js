@@ -12,7 +12,7 @@ const tasks = {
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
   'hvordan har du det?': () => module.exports.mood, 
-  'det er tomt': () => 'Gusevik, du må kjøpe mer is' 
+  'hvem er sjefen?': () => `${module.exports.boss} har ansvar for meg!`
 };
 
 module.exports = co.wrap(function*(body){
@@ -32,6 +32,7 @@ module.exports = co.wrap(function*(body){
 });
 
 module.exports.mood = 'jeg er glad i is!';
+module.exports.boss = 'ingen';
 
 function findTask(sentence){
   const keywords = Object.keys(tasks);
