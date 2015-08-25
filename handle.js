@@ -12,7 +12,8 @@ const tasks = {
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
   'hvordan har du det?': () => module.exports.mood, 
-  'hvem er sjefen?': () => `${module.exports.boss} har ansvar for meg!`
+  'hvem er sjefen?': () => `${module.exports.boss} har ansvar for meg!`,
+  'det er tomt for': (_, product, complainer) => `${module.exports.boss}: ${complainer} sier det er tomt for ${product}!\nDu må kjøpe mer ${product}!`
 };
 
 module.exports = co.wrap(function*(body){
