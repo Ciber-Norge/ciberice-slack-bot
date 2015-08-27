@@ -7,7 +7,7 @@ const tasks = {
   'jeg er': require('./registerUser'),
   'kjøp': require('./buyIceByName'),
   'hjelp': require('./help'),
-  'vi trenger mer sandwich is': ()  => 'http://big.assets.huffingtonpost.com/IceCreamSandwichesMade.gif',
+  'vi trenger mer sandwich is': ()  => 'http://i.imgur.com/QapsLsI.gif',
   'hva liker jeg': require('./whatDoILike'),
   'badges': require('./badges'),
   'mine badges': require('./myBadges'),
