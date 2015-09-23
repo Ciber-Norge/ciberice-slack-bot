@@ -2,7 +2,11 @@ const co = require('co');
 const find = require('./findIce');
 const buy = require('./buy');
 
-module.exports = co.wrap(function*(user, name){
+module.exports = co.wrap(function*(user, name, slack){
+  if(slack.channel_name != 'isbot'){
+    return ":rage: Du kan bare kjøpe is i #isbot "+slack.user_name;
+  }
+  
   try{
     const found = yield find(name);
     
