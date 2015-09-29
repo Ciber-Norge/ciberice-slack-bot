@@ -20,7 +20,8 @@ module.exports = co.wrap(function*(user, name, slack){
     const badgesComment = result.newBadges && result.newBadges.length ? 
                             "\nGratulerer med badge!\n" + result.newBadges.join("\n") :
                             "";
-    return "Kos deg med "+found.Title+" ("+comment+")" + badgesComment;
+    const calorieComment = "Denne isen har " + result.calories + "kalorier. Lykke til med #SK16 :) ";
+    return "Kos deg med "+found.Title+" ("+comment+")" + badgesComment + \n + calorieComment;
   }catch(error){
     return error;
   }
